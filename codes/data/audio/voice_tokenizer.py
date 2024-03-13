@@ -28,13 +28,31 @@ def remove_extraneous_punctuation(word):
     return word
 
 
+def lowercase(text):
+    return text.lower()
+
+_whitespace_re = re.compile(r'\s+')
+
+def collapse_whitespace(text):
+    return re.sub(_whitespace_re, ' ', text)
+
+def convert_to_ascii(text):
+    return unidecode(text)
+
+def basic_cleaners(text):
+    '''Basic pipeline that lowercases and collapses whitespace without transliteration.'''
+    text = lowercase(text)
+    text = collapse_whitespace(text)
+    return text
+
 class VoiceBpeTokenizer:
     def __init__(self, vocab_file):
         if vocab_file is not None:
             self.tokenizer = Tokenizer.from_file(vocab_file)
 
     def preprocess_text(self, txt):
-        txt = english_cleaners(txt)
+        # txt = english_cleaners(txt)
+        txt = basic_cleaners(txt)
         txt = remove_extraneous_punctuation(txt)
         return txt
 
