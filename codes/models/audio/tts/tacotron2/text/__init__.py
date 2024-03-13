@@ -15,7 +15,8 @@ _id_to_symbol = {i: s for i, s in enumerate(symbols)}
 _curly_re = re.compile(r'(.*?)\{(.+?)\}(.*)')
 
 
-def text_to_sequence(text, cleaner_names=['english_cleaners']):
+#def text_to_sequence(text, cleaner_names=['english_cleaners']):
+def text_to_sequence(text, cleaner_names=['basic_cleaners']):
   '''Converts a string of text to a sequence of IDs corresponding to the symbols in the text.
 
     The text can optionally have ARPAbet sequences enclosed in curly braces embedded

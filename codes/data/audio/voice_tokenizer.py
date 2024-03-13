@@ -99,7 +99,8 @@ def train():
     #allowed_characters_re = re.compile(r'^[0-9a-z!@#%_=:;"/, \-\$\^&\*\(\)\+\{\[\]\}\\\.\'\?—–ʼ]+$')
     allowed_characters_re = re.compile(r'^[a-z!:;"/, \-\(\)\.\'\?ʼ]+$')
     def preprocess_word(word, report=False):
-        word = english_cleaners(word)
+        #word = english_cleaners(word)
+        word = basic_cleaners(word)
         word = remove_extraneous_punctuation(word)
         if not bool(allowed_characters_re.match(word)):
             if report and word:

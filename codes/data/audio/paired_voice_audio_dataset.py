@@ -115,7 +115,8 @@ def load_voxpopuli(filename, type):
 
 class CharacterTokenizer:
     def encode(self, txt):
-        return text_to_sequence(txt, ['english_cleaners'])
+        #return text_to_sequence(txt, ['english_cleaners'])
+        return text_to_sequence(txt, ['basic_cleaners'])
 
     def decode(self, seq):
         return sequence_to_text(seq)

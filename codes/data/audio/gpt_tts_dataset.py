@@ -21,7 +21,8 @@ class GptTtsDataset(torch.utils.data.Dataset):
     def __init__(self, opt):
         self.path = os.path.dirname(opt['path'])
         self.audiopaths_and_text = load_filepaths_and_text(opt['path'])
-        self.text_cleaners=['english_cleaners']
+        #self.text_cleaners=['english_cleaners']
+        self.text_cleaners=['basic_cleaners']
 
         self.MEL_DICTIONARY_SIZE = opt['mel_vocab_size']+3
         self.MEL_START_TOKEN = LongTensor([self.MEL_DICTIONARY_SIZE-3])
