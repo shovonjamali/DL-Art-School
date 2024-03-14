@@ -52,7 +52,7 @@ steps:
     optimizer: adamw # this should be adamw_zero if you're using distributed training
     #optimizer: lion
     optimizer_params:
-      lr: !!float 1e-5 # CHANGEME: this was originally 1e-4; I reduced it to 1e-5 because it's fine-tuning, but **you should experiment with this value**
+      lr: !!float 1e-4 # CHANGEME: this was originally 1e-4; I reduced it to 1e-5 because it's fine-tuning, but **you should experiment with this value**
       #lr: !!float 2e-6 # USE LOWER LR for LION
       triton: false # ONLY RELEVANT FOR LION
       weight_decay: !!float 1e-2
@@ -143,7 +143,7 @@ logger:
   visuals: [gen, mel] #TODO: figure this out
   visual_debug_rate: 500
   is_mel_spectrogram: true
-  disable_state_saving: true # CHANGEME if you plan to halt training inbetween
+  disable_state_saving: false # CHANGEME if you plan to halt training inbetween
 
 upgrades:
   # Variable: number_of_checkpoints_to_save
@@ -154,7 +154,7 @@ upgrades:
   # For Colab use 1 or 2 for gDrive and 5 for instance drive
   # 1 == Leave last saved checkpoint + last saved state (about 6.8 GB).
   # 2 == Leave last 2 saved checkpoints + last saved states (about 2 *~ 6.8 GB =~ 13.6 GB).
-  number_of_checkpoints_to_save: 0
+  number_of_checkpoints_to_save: 1
   # Variable: number_of_states_to_save
   # Description: Define how many states should be saved on disk (1 state =~ 3.4 GB)
   # if disable_state_saving is set as true this option will be inactive
@@ -164,4 +164,4 @@ upgrades:
   # For Colab use 1 or 2 for gDrive and 5 for instance drive
   # 1 == Leave last saved state (about 3.4 GB).
   # 2 == Leave last 2 saved states (about 2 *~ 3.4 GB =~ 6.8 GB).
-  number_of_states_to_save: 0
+  number_of_states_to_save: 1
