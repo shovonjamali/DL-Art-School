@@ -8,7 +8,7 @@ from tokenizers.trainers import BpeTrainer
 
 from data.audio.paired_voice_audio_dataset import load_mozilla_cv, load_voxpopuli, load_tsv
 from models.audio.tts.tacotron2 import load_filepaths_and_text
-from models.audio.tts.tacotron2.text.cleaners import english_cleaners
+from models.audio.tts.tacotron2.text.cleaners import english_cleaners, basic_cleaners
 
 
 def remove_extraneous_punctuation(word):
@@ -28,22 +28,22 @@ def remove_extraneous_punctuation(word):
     return word
 
 
-def lowercase(text):
-    return text.lower()
+# def lowercase(text):
+#     return text.lower()
 
-_whitespace_re = re.compile(r'\s+')
+# _whitespace_re = re.compile(r'\s+')
 
-def collapse_whitespace(text):
-    return re.sub(_whitespace_re, ' ', text)
+# def collapse_whitespace(text):
+#     return re.sub(_whitespace_re, ' ', text)
 
-def convert_to_ascii(text):
-    return unidecode(text)
+# def convert_to_ascii(text):
+#     return unidecode(text)
 
-def basic_cleaners(text):
-    '''Basic pipeline that lowercases and collapses whitespace without transliteration.'''
-    text = lowercase(text)
-    text = collapse_whitespace(text)
-    return text
+# def basic_cleaners(text):
+#     '''Basic pipeline that lowercases and collapses whitespace without transliteration.'''
+#     text = lowercase(text)
+#     text = collapse_whitespace(text)
+#     return text
 
 class VoiceBpeTokenizer:
     def __init__(self, vocab_file):

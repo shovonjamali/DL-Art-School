@@ -69,6 +69,8 @@ def basic_cleaners(text):
   '''Basic pipeline that lowercases and collapses whitespace without transliteration.'''
   text = lowercase(text)
   text = collapse_whitespace(text)
+  text = text.replace('"', '') # updated like english_cleaners
+  # TO-DO: expand_abbreviations for other non-english language
   return text
 
 
