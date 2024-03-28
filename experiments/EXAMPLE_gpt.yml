@@ -26,6 +26,7 @@ datasets:
     conditioning_length: 44000
     use_bpe_tokenizer: True
     load_aligned_codes: False
+    tokenizer_vocab: da_bpe_tokenizer.json
   val:
     name: CHANGEME_validation_dataset_name
     n_workers: 1
@@ -42,6 +43,7 @@ datasets:
     conditioning_length: 44000
     use_bpe_tokenizer: True
     load_aligned_codes: False
+    tokenizer_vocab: da_bpe_tokenizer.json
 
 steps:        
   gpt_train:
